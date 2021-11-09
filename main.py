@@ -77,16 +77,15 @@ class Parser:
                                  language,
                                  multiple_parse(self.driver.find_element_by_id('tb').get_attribute('innerHTML'))]
                     }
+        res = [table_parse(self.driver.find_element_by_id('tb').get_attribute('innerHTML'))]
+        if self.driver.find_element_by_id('or'):
+            descendants = descendants_parse(self.driver.find_element_by_id('or').get_attribute('innerHTML'))
         else:
-            res = [table_parse(self.driver.find_element_by_id('tb').get_attribute('innerHTML'))]
-            if self.driver.find_element_by_id('or'):
-                descendants = descendants_parse(self.driver.find_element_by_id('or').get_attribute('innerHTML'))
-            else:
-                descendants = []
-            self.driver.switch_to.frame(self.driver.find_element_by_id('pi'))
-            graph = graph_parse(self.driver.find_element_by_id('graph0').get_attribute('innerHTML'))
-            res.append([word, language, definition, graph, descendants, True])
-            return {'ok': res}
+            descendants = []
+        self.driver.switch_to.frame(self.driver.find_element_by_id('pi'))
+        graph = graph_parse(self.driver.find_element_by_id('graph0').get_attribute('innerHTML'))
+        res.append([word, language, definition, graph, descendants, True])
+        return {'ok': res}
 
     def close(self):
         """Close webdriver"""
