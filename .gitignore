@@ -4,6 +4,11 @@
 
 # IntelliJ project files
 .idea
+.ipynb_checkpoints
+data/.ipynb_checkpoints
 *.iml
 out
 gen
+src/geckodriver.log
+/file_*.log
+/geckodriver.log
