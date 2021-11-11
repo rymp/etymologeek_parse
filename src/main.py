@@ -149,7 +149,7 @@ class Pipeline:
                 data = pd.DataFrame(res['ok'], columns=['word', 'language', 'definition', 'graph', 'descendants'])
                 data['set_id'] = str(uuid.uuid4())
                 data['upload'] = datetime.now().strftime('%Y-%m-%d')
-                data = data[['set_id', 'word', 'language', 'graph', 'descendants', 'upload']]
+                data = data[['set_id', 'word', 'language', 'definition', 'graph', 'descendants', 'upload']]
                 self.conn.save_data(data)
                 logger.info(f"{word} - saved")
             elif 'multiple' in res:
@@ -163,3 +163,6 @@ class Pipeline:
 
 if __name__ == '__main__':
     Pipeline().fit()
+    # parser = Parser()
+    # print(parser.fit_transform(word="Kampf", language="deu"))
+    # parser.close()

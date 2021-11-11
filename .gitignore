@@ -12,3 +12,4 @@ gen
 src/geckodriver.log
 /file_*.log
 /geckodriver.log
+data/actual_vocab.csv
